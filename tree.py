@@ -12,20 +12,25 @@ def genAngle():
     """Generates an angle from pi10 to 2*pi/3"""
     return (2*math.pi/3 - math.pi/10) * random.random() + math.pi/10
     
+def genLength(length):
+    """makes a length from 1/3 to 2/3 of a branch in length"""
+    return .333333 * random.random() * length + .5 * length
+
 def dColor(color):
-    return (max(min(color[0]+3,255),0),
-            max(min(color[1],255),0),
-            max(min(color[2]+15,255),0))
+    return (max(min(color[0],255),0),
+            max(min(color[1]+13,255),0),
+            max(min(color[2]+1,255),0))
     
 
 def drawTree(s, color, loc, length, angle, n):
     """Draws a segment of the tree, and then draws more"""
     if n > 0:
         ep = endPoint(loc, length, angle)
-        pygame.draw.line(s, color, loc, ep)
+        pygame.draw.aaline(s, color, loc, ep, True)
         a = genAngle()
-        drawTree(s, dColor(color), ep, 2*length/3, angle+a/2, n-1)
-        drawTree(s, dColor(color), ep, 2*length/3, angle-a/2, n-1)
+        for x in range(random.randrange(2,5)):
+                       drawTree(s, dColor(color), ep, genLength(length), angle+a/2, n-1)
+#        drawTree(s, dColor(color), ep, genLength(length), angle-a/2, n-1)
 
 def main():
     w = 512
