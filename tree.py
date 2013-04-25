@@ -27,9 +27,12 @@ def drawTree(s, color, loc, length, angle, n):
     if n > 0:
         ep = endPoint(loc, length, angle)
         pygame.draw.aaline(s, color, loc, ep, True)
-        a = genAngle()
+
         for x in range(random.randrange(2,5)):
-                       drawTree(s, dColor(color), ep, genLength(length), angle+a/2, n-1)
+            a = genAngle()
+            if (random.random() > .5):
+                a = -a
+            drawTree(s, dColor(color), ep, genLength(length), angle+a/2, n-1)
 #        drawTree(s, dColor(color), ep, genLength(length), angle-a/2, n-1)
 
 def main():
