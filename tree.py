@@ -13,7 +13,7 @@ def genAngle():
     return (2*math.pi/3 - math.pi/10) * random.random() + math.pi/10
     
 def genLength(length):
-    """makes a length from 1/3 to 2/3 of a branch in length"""
+    """makes a length from 1/2 to 5/6 of a branch in length"""
     return .333333 * random.random() * length + .5 * length
 
 def dColor(color):
@@ -33,7 +33,6 @@ def drawTree(s, color, loc, length, angle, n):
             if (random.random() > .5):
                 a = -a
             drawTree(s, dColor(color), ep, genLength(length), angle+a/2, n-1)
-#        drawTree(s, dColor(color), ep, genLength(length), angle-a/2, n-1)
 
 def main():
     w = 512
