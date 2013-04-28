@@ -10,7 +10,7 @@ def sq(dim, level, s):
         for i in range(3):
             for j in range(3):
                 if i == 1 and j == 1:
-                    pygame.draw.rect(s, (255,255,255), (x+w3,y+h3,w3,h3))
+                    pygame.draw.rect(s, (255,0,0), (x+w3,y+h3,w3,h3))
                 else:
                     sq((x+i*w3,y+j*h3,w3,h3), level-1, s)
 

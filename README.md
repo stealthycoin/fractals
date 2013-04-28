@@ -19,3 +19,7 @@ Koch Snoflake
 ![Koch Snowflake](/images/snowflake.png)
 
 
+Sierpinski Carpet
+-------
+
+![Sirpinski Carpet](/images/carpet.png)
