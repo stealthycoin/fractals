@@ -13,13 +13,13 @@ def shiftR(rad):
 
 def drawCircle(s, color, center, radius, n):
     if n > 0:
-        drawCircle(s, color, center + shiftR(radius), radius/2, n-1)
-        drawCircle(s, color, center + shiftR(radius), radius/2, n-1)
-        drawCircle(s, color, center + shiftR(radius), radius/2, n-1)
-        drawCircle(s, color, center + shiftR(radius), radius/2, n-1)
+        for x in range(r.randint(3,5)):
+            drawCircle(s, color, center + shiftR(radius), radius/2, n-1)
     else:
-        c = (int(center.tolist()[0]), int(center.tolist()[1]))
+        c = [int(center.tolist()[0]), int(center.tolist()[1])]
         pygame.draw.circle(s, color, c, int(radius), 2)
+
+        
 
 
 def argHandler(arglist):
@@ -47,14 +47,17 @@ def main():
     z = w,h
     d = pygame.display
     s = d.set_mode(z)
-    pygame.draw.rect(s, (60,60,60), (0,0,w,h))
+    pygame.draw.rect(s, (0,0,0), (0,0,w,h))
     
     depth = int(useArg(args, 'depth', 1))
 
-    drawCircle(s, (100,0,188), np.array([w/2, h/2]), w/2, depth)
-    drawCircle(s, (188,0,100), np.array([w/2, h/2]), w/2, depth)
-    drawCircle(s, (100,200,188), np.array([w/2, h/2]), w/2, depth)
-    drawCircle(s, (116,86,16), np.array([w/2, h/2]), w/2, depth)
+    drawCircle(s, pygame.Color('0x009A80'), np.array([w/2, h/2]), w/2, depth)
+    drawCircle(s, pygame.Color('0xF39000'), np.array([w/2, h/2]), w/2, depth)
+    drawCircle(s, pygame.Color('0x0B559E'), np.array([w/2, h/2]), w/2, depth)
+    
+    
+
+
     d.flip()
 
     #save to disk
