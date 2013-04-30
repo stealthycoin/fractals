@@ -29,3 +29,8 @@ Pythagoras Tree
 -------
 
 ![Pythagoras Tree](/images/pytree.png)
+
+H-Tree
+-------
+
+![H-Tree](/images/htree.png)
