@@ -42,21 +42,36 @@ def drawTree(s, pts, size, angle, color, n):
         drawTree(s, pts2, size*scale, angle - dangle, dColor(color), n-1)
 
 
+def argHandler(arglist):
+    arguments = {}
+    key = "program"
+    for argument in arglist:
+        if key == None and argument.startswith("-"):
+            key = argument[1:]
+            arguments[key] = None
+        elif key != None:
+            arguments[key] = argument
+            key = None
+    return arguments
+    
+def useArg(args, key, default=None):
+    try:
+        return args[key]
+    except KeyError:
+        return default
+
 def main():
-    w = 800
-    h = 800
+    args = argHandler(sys.argv)
+    w = int(useArg(args, 'w', 800))
+    h = int(useArg(args, 'h', 800))
     z = w,h
     d = pygame.display
     s = d.set_mode(z)
     pygame.draw.rect(s, (60,60,60), (0,0,w,h))
     
-    #args
-    if len(sys.argv) > 1:
-        depth = int(sys.argv[1])
-    else: 
-        depth = 1
+    depth = int(useArg(args, 'depth', 1))
 
-    size = w/6
+    size = h/4
     offset = 10
     pts = (np.array([w/2-size/2, h-size-offset]), #top left
            np.array([w/2-size/2, h-offset])) #bottom left
@@ -65,7 +80,11 @@ def main():
 
     drawTree(s, pts, size, 0, (116,86,16), depth)
     d.flip()
-        
+
+    #save to disk
+    if args['s'] != None:
+        pygame.image.save(s, args['s'])
+    
     b = True
     while b:
         for event in pygame.event.get():
