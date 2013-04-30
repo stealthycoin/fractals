@@ -12,3 +12,7 @@ bin-release/
 
 #emacs backups
 *~
+
+
+#mac
+.DS_Store
