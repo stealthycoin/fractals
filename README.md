@@ -27,4 +27,8 @@ H-Tree
 
 Circles
 ------
+
+Run like so:
+python circles.py -depth number
+Where 1 <= number <= 8
 ![Circles](/images/circles.png)
